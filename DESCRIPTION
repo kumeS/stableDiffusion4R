@@ -1,0 +1,33 @@
+Package: stableDiffusion4R
+Type: Package
+Title: Provision of stable diffusion interface for R
+Version: 0.0.1
+Date: 2023-08-20
+Authors@R: c(
+    person (given = "Satoshi", family = "Kume",
+    role = c("aut", "cre"), 
+    email = "satoshi.kume.1984@gmail.com",
+    comment = c(ORCID = "0000-0001-7481-2843"))
+    )
+Maintainer: Satoshi Kume <satoshi.kume.1984@gmail.com>
+Description: AArtificial Intelligence (AI)-based image generation techniques are revolutionizing various fields, 
+    and this package brings those capabilities into the R environment. This package provides a seamless interface to integrate the 'Stable Diffusion' Web APIs 
+    (see <https://platform.stability.ai/docs/getting-started>) into R, allowing users to leverage advanced image transformation methods. 
+    Specifically, this package includes functions for text-to-image (txt2img or t2i) and image-to-image (img2img or i2i) transformations 
+    using the 'Stable Diffusion' APIs, enabling creative and analytical applications in data visualization and more.
+Depends: R (>= 4.2.0)
+Imports: httr, 
+    jsonlite, 
+    EBImage,
+    assertthat,
+    grDevices,  
+    abind,
+    base64enc, 
+    png,
+    animation
+Suggests: testthat, knitr
+License: Artistic-2.0
+URL: https://kumes.github.io/stableDiffusion4R/, https://github.com/kumeS/stableDiffusion4R
+BugReports: https://github.com/kumeS/stableDiffusion4R/issues
+RoxygenNote: 7.2.3
+Encoding: UTF-8
