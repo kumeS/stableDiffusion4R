@@ -1,4 +1,4 @@
-#' Display Images and Optionally Write Them to File
+#' Display Images and Optionally Write Them to File	#' Display Images and Optionally Write Them to File
 #'
 #' @title Display Images and Optionally Write Them to File
 #' @description This function displays images that are stored in a list. It also has options for saving the images to a .Rds or .png file.
@@ -13,7 +13,7 @@
 #' @importFrom png writePNG
 #' @importFrom grDevices as.raster
 #' @return Invisible NULL. The function is called for its side effect of displaying images and optionally writing them to file.
-#' @export imgDisplay
+#' @export Display
 #' @author Satoshi Kume
 #'
 #' @examples
@@ -22,21 +22,16 @@
 #' img <- list(image1, image2, image3)
 #'
 #' # Display the images
-#' imgDisplay(img)
+#' Display(img)
 #'
 #' # Display the images and write them to .png files
-#' imgDisplay(img, write_file = TRUE)
+#' Display(img, write_file = TRUE)
 #'
 #' # Display the images and save them as .Rds files
-#' imgDisplay(img, Rds = TRUE)
+#' Display(img, Rds = TRUE)
 #' }
 
-imgDisplay <- function(img,
-                       write_file = FALSE,
-                       Rds = FALSE,
-                       mar = 0.05,
-                       mfRow = TRUE){
-
+Display <- function(img, write_file = FALSE, Rds = FALSE, mar = 0.05, mfRow = TRUE){
   # Store the current graphics parameters
   oldpar <- graphics::par(no.readonly = TRUE)
 

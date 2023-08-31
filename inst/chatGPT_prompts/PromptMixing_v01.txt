@@ -1,0 +1,1 @@
+Create a new prompt by mixing the following prompts, adjusting any duplicates, and considering both elements.

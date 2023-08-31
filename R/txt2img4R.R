@@ -11,11 +11,13 @@
 #' @param steps An integer. The number of diffusion steps to run. Default is 10.
 #' @param cfg_scale A numeric value. How strictly the diffusion process adheres to the prompt text. Default is 7.
 #' @param clip_guidance_preset A string. A preset to guide the image model. Default is 'NONE'.
-#' @param sampler A string. Which sampler to use for the diffusion process. If this value is omitted we'll automatically select an appropriate sampler for you. Possible values are 'DDIM', 'DDPM', 'K_DPMPP_2M', 'K_DPMPP_2S_ANCESTRAL', 'K_DPM_2', 'K_DPM_2_ANCESTRAL', 'K_EULER', 'K_EULER_ANCESTRAL', 'K_HEUN', 'K_LMS'. Default is NULL.
+#' @param sampler A string. Which sampler to use for the diffusion process. If this value is omitted we'll automatically select an appropriate sampler for you.
+#'    Default is NONE. Possible values are 'NONE', 'DDIM', 'DDPM', 'K_DPMPP_2M', 'K_DPMPP_2S_ANCESTRAL', 'K_DPM_2', 'K_DPM_2_ANCESTRAL', 'K_EULER', 'K_EULER_ANCESTRAL', 'K_HEUN', 'K_LMS'.
 #' @param seed An integer. The seed for generating random noise. The range is 0 to 4294967295. The default is 0, which is the random noise seed.
-#' @param style_preset A string. A style preset to guide the image model towards a particular style. Default is 'photographic'. Some possible values are: '3d-model', 'analog-film', 'anime', 'cinematic', 'comic-book', 'digital-art', 'enhance', 'fantasy-art', 'isometric', 'line-art', 'low-poly', 'modeling-compound', 'neon-punk', 'origami', 'photographic', 'pixel-art', 'tile-texture'.
-#' @param engine_id A string. The engine id to be used in the API. Default is 'stable-diffusion-512-v2-1'.
-#'                  Other possible values are 'stable-diffusion-v1-5', 'stable-diffusion-xl-beta-v2-2-2', 'stable-diffusion-768-v2-1'.
+#' @param style_preset A string. A style preset to guide the image model towards a particular style. Default is 'NONE'.
+#'    Some possible values are: 'NONE', '3d-model', 'analog-film', 'anime', 'cinematic', 'comic-book', 'digital-art', 'enhance', 'fantasy-art', 'isometric', 'line-art', 'low-poly', 'modeling-compound', 'neon-punk', 'origami', 'photographic', 'pixel-art', 'tile-texture'.
+#' @param engine_id A string. The engine id to be used in the API. Default is 'stable-diffusion-v1-5'.
+#'    Other possible values are 'stable-diffusion-768-v2-1', 'stable-diffusion-512-v2-1', 'stable-diffusion-xl-1024-v1-0', 'stable-diffusion-xl-1024-v0-9', and 'stable-diffusion-xl-beta-v2-2-2'.
 #' @param api_host A string. The host of the Stable Diffusion API. Default is 'https://api.stability.ai'.
 #' @param api_key A string. The API key for the Stable Diffusion API. It is read from the 'DreamStudio_API_KEY' environment variable by default.
 #' @param verbose A logical flag to print the message Default is TRUE.
@@ -42,14 +44,14 @@ txt2img4R <- function(
   weight = 0.5,
   height = 512,
   width = 512,
-  number_of_images = 3,
+  number_of_images = 1,
   steps = 10,
   cfg_scale = 7,
   clip_guidance_preset = "NONE",
-  sampler = NULL,
+  sampler = "NONE",
   seed = 0,
-  style_preset = "photographic",
-  engine_id = "stable-diffusion-512-v2-1",
+  style_preset = "NONE",
+  engine_id = "stable-diffusion-v1-5",
   api_host = "https://api.stability.ai",
   api_key = Sys.getenv("DreamStudio_API_KEY"),
   verbose = TRUE
@@ -90,11 +92,12 @@ txt2img4R <- function(
     assertthat::is.string(clip_guidance_preset),
     clip_guidance_preset %in% c("FAST_BLUE", "FAST_GREEN", "NONE", "SIMPLE", "SLOW", "SLOWER", "SLOWEST"),
     #assertthat::is.string(sampler),
-    #sampler %in% c('DDIM', 'DDPM', 'K_DPMPP_2M', 'K_DPMPP_2S_ANCESTRAL', 'K_DPM_2', 'K_DPM_2_ANCESTRAL', 'K_EULER', 'K_EULER_ANCESTRAL', 'K_HEUN', 'K_LMS'),
+    #is.null(sampler)
+    sampler %in% c('NONE', 'DDIM', 'DDPM', 'K_DPMPP_2M', 'K_DPMPP_2S_ANCESTRAL', 'K_DPM_2', 'K_DPM_2_ANCESTRAL', 'K_EULER', 'K_EULER_ANCESTRAL', 'K_HEUN', 'K_LMS'),
     assertthat::is.string(engine_id),
     assertthat::is.string(style_preset),
-    style_preset %in% c("3d-model", "analog-film", "anime", "cinematic", "comic-book", "digital-art", "enhance", "fantasy-art", "isometric", "line-art", "low-poly", "modeling-compound", "neon-punk", "origami", "photographic", "pixel-art", "tile-texture"),
-    engine_id %in% c("stable-diffusion-512-v2-1", "stable-diffusion-v1-5", "stable-diffusion-xl-beta-v2-2-2", "stable-diffusion-768-v2-1"),
+    style_preset %in% c("NONE", "3d-model", "analog-film", "anime", "cinematic", "comic-book", "digital-art", "enhance", "fantasy-art", "isometric", "line-art", "low-poly", "modeling-compound", "neon-punk", "origami", "photographic", "pixel-art", "tile-texture"),
+    engine_id %in% c("stable-diffusion-512-v2-1", "stable-diffusion-v1-5", "stable-diffusion-xl-beta-v2-2-2", "stable-diffusion-768-v2-1", "stable-diffusion-xl-1024-v1-0", "stable-diffusion-xl-1024-v0-9", "stable-diffusion-xl-beta-v2-2-2"),
     assertthat::is.string(api_host),
     assertthat::is.string(api_key)
   )
@@ -107,25 +110,7 @@ txt2img4R <- function(
     "Authorization" = paste0("Bearer ", api_key)
   )
 
-if(is.null(sampler)){
-payload <- list(
-    "text_prompts" = list(
-      list("text" = text_prompts,
-           "weight" = weight)
-    ),
-    "negative_prompts" = list(
-      list("text" = negative_prompts)
-    ),
-    "cfg_scale" = cfg_scale,
-    "clip_guidance_preset" = clip_guidance_preset,
-    "height" = height,
-    "width" = width,
-    "samples" = number_of_images,
-    "steps" = steps,
-    "seed" = seed,
-    "style_preset" = style_preset
-  )
-}else{
+#create a list
 payload <- list(
     "text_prompts" = list(
       list("text" = text_prompts,
@@ -144,11 +129,19 @@ payload <- list(
     "sampler" = sampler,
     "style_preset" = style_preset
   )
+
+if(sampler == "NONE"){
+payload <- payload[names(payload) != "sampler"]
 }
 
-  result <- list()
+if(style_preset == "NONE"){
+payload <- payload[names(payload) != "style_preset"]
+}
 
-  for (i in seq_len(number_of_images)) {
+result <- list()
+attr(result, "arguments") <- payload
+
+for (i in seq_len(number_of_images)) {
     #i <- 1
     if(verbose){cat("Generate", i, "image\n")}
 
@@ -158,7 +151,8 @@ payload <- list(
                            config = headers)
 
     if (httr::http_status(response)$category != "Success") {
-      stop("Non-200 response: ", httr::content(response, "text", encoding = "UTF-8"))
+      message("Non-200 response: ", httr::content(response, "text", encoding = "UTF-8"))
+      return(result)
     }
 
     image_data <- jsonlite::fromJSON(httr::content(response, "text", encoding = "UTF-8"))
@@ -172,3 +166,4 @@ payload <- list(
 
   return(result)
 }
+

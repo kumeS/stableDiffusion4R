@@ -24,7 +24,8 @@ Imports: httr,
     abind,
     base64enc, 
     png,
-    animation
+    animation,
+    hexSticker
 Suggests: testthat, knitr
 License: Artistic-2.0
 URL: https://kumes.github.io/stableDiffusion4R/, https://github.com/kumeS/stableDiffusion4R

@@ -1,0 +1,2 @@
+Analyze the provided text prompts used in Stable Diffusion image generation to identify common elements and themes. Based on the commonalities, create a basic prompt that encapsulates the core artistic style and serves as the basis for generating images with a consistent aesthetic. Please rephrase in abstract style or technique, without proper nouns. Prompts should be in English and separated by commas.
+
