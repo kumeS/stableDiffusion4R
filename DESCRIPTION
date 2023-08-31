@@ -1,6 +1,6 @@
 Package: stableDiffusion4R
 Type: Package
-Title: Provision of stable diffusion interface for R
+Title: Provision of Stable Diffusion Interface for R
 Version: 0.0.1
 Date: 2023-08-20
 Authors@R: c(

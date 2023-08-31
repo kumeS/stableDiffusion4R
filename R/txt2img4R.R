@@ -110,6 +110,10 @@ txt2img4R <- function(
     "Authorization" = paste0("Bearer ", api_key)
   )
 
+#For test
+#text_prompts = "japanese castle"; negative_prompts = "text, low quality, noisy, blurry";weight = 0.5; height = 512; width = 512; number_of_images = 1; steps = 10; cfg_scale = 7; clip_guidance_preset = "NONE";
+#sampler = "NONE"; seed = 0; style_preset = "NONE"; engine_id = "stable-diffusion-v1-5"; api_host = "https://api.stability.ai"; api_key = Sys.getenv("DreamStudio_API_KEY"); verbose = TRUE
+
 #create a list
 payload <- list(
     "text_prompts" = list(
@@ -139,11 +143,14 @@ payload <- payload[names(payload) != "style_preset"]
 }
 
 result <- list()
-attr(result, "arguments") <- payload
 
 for (i in seq_len(number_of_images)) {
     #i <- 1
     if(verbose){cat("Generate", i, "image\n")}
+
+    if(seed == 0){
+    payload[names(payload) == "seed"] <- sample(1:429496729, 1)
+    }
 
     response <- httr::POST(uri,
                            body = payload,
@@ -162,8 +169,13 @@ for (i in seq_len(number_of_images)) {
     Img <- EBImage::rotate(EBImage::Image(decode_image, colormode = 'Color' ), angle=90)
 
     result[[i]] <- Img
+    #str(result)
+    attr(result[[i]], "arguments") <- payload
+    #str(result)
+    #imgDisplay(result)
   }
 
+  #Images Output
   return(result)
 }
 

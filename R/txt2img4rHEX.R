@@ -1,10 +1,12 @@
 #' Create Hex Stickers using text-to-image via Stable Diffusion R Packages
 
-
+text_prompts <- "speed star, logo of deepRstudio, text logo, fast-looking, geometry, Seamless Language Translation, RStudio, translation, API"
+package_name = "deepRstudio"
+number_of_images = 1
 
 txt2img4rHEX <- function(text_prompts,
                          package_name,
-                         number_of_images = 3){
+                         number_of_images = 1){
 
   # Verify the types of the input parameters
   assertthat::assert_that(assertthat::is.string(text_prompts))
@@ -16,20 +18,22 @@ txt2img4rHEX <- function(text_prompts,
 
   # Generate the image via Stable Diffusion
   res <- txt2img4R(text_prompts = pr,
-                   negative_prompts = "text, low quality, noisy, blurry",
+                   negative_prompts = "text, ((low quality)), noisy, blurry, background",
                    height = 512*2,
                    width = 512*2,
                    number_of_images = number_of_images,
-                   steps = 15,
-                   cfg_scale = 7,
+                   steps = 20,
+                   cfg_scale = 15,
                    clip_guidance_preset = "NONE",
-                   sampler = "NONE",
+                   sampler = "K_EULER_ANCESTRAL",
                    seed = 0,
                    style_preset = "NONE",
-                   engine_id = "stable-diffusion-v1-5",
+                   engine_id = "stable-diffusion-xl-1024-v1-0",
                    api_host = "https://api.stability.ai",
                    api_key = Sys.getenv("DreamStudio_API_KEY"),
                    verbose = TRUE)
+
+  #imgDisplay(res, write_file = T)
 
   # Create the hex stickers
   img <- list()
