@@ -1,11 +1,11 @@
-#' Edit or Extend Images with OpenAI API
+#' Edit or Extend Images with DALLE2 API
 #'
-#' This function takes in an image file and a text prompt, and makes a request to OpenAI's API
+#' This function takes in an image file and a text prompt, and makes a request to OpenAI's DALLE2 API
 #' to create edited or extended images based on the prompt. It can return either URLs of the generated images
 #' or the images themselves, depending on the value of the `Output_image` argument.
 #'
-#' @title Edit or Extend Images with OpenAI API
-#' @description Generates new images by applying text prompts to original images, using OpenAI's API.
+#' @title Edit or Extend Images with DALLE2 API
+#' @description Generates new images by applying text prompts to original images, using OpenAI's DALLE2 API.
 #' @param image A string. The file path to the image to edit. Must be a valid PNG file.
 #' @param mask An optional string. An additional image file path whose fully transparent areas indicate where image should be edited.
 #' @param prompt A string. A text description of the desired images. The maximum length is 1000 characters.

@@ -28,17 +28,17 @@
 #' @importFrom png readPNG
 #' @importFrom EBImage rotate Image display
 #' @return A list of images generated from the text prompt.
-#' @export txt2img4R
+#' @export txt2img
 #' @author Satoshi Kume
 #' @examples
 #' \dontrun{
 #' Sys.setenv(DreamStudio_API_KEY = "Your API key")
 #' text_prompts = "japanese castle"
-#' images = txt2img4R(text_prompts)
+#' images = txt2img(text_prompts)
 #' Display(images)
 #' }
 
-txt2img4R <- function(
+txt2img <- function(
   text_prompts = "",
   negative_prompts = "text, low quality, noisy, blurry",
   weight = 0.5,

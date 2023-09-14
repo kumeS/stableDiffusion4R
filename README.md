@@ -84,6 +84,24 @@ Note: Please be aware of newline character inconsistencies across different oper
 ### Task specific image generation
 
 
+### Image generation functions using DALL·E 2  
+
+|Function|Description|Script|Flowchart|
+|:---|:---|:---:|:---:|
+|generateImage4R|Generate Images Using OpenAI API|[Script](https://github.com/kumeS/chatAI4R/blob/main/R/generateImage4R.R)||
+|editImage4R|Edit or Extend Images with OpenAI API|[Script](https://github.com/kumeS/chatAI4R/blob/main/R/editImage4R.R)||
+|imageVariation4R|Generate Image Variations using OpenAI API|[Script](https://github.com/kumeS/chatAI4R/blob/main/R/imageVariation4R.R)||
+|createImagePrompt_v1|create a prompt for generating an image from text using an AI model|[Script](https://github.com/kumeS/chatAI4R/blob/main/R/createImagePrompt_v1.R)||
+|createImagePrompt_v2|create a more complex prompt by considering additional attributes|[Script](https://github.com/kumeS/chatAI4R/blob/main/R/createImagePrompt_v2.R)||
+
+### Visualization functions
+
+|Function|Description|Script|Flowchart|
+|:---|:---|:---:|:---:|
+|Display|Display images and optionally write them into image files|[Script](https://github.com/kumeS/chatAI4R/blob/main/R/Display.R)||
+|createHEX|Create Hex Stickers for R Packages (experimental)|[Script](https://github.com/kumeS/chatAI4R/blob/main/R/createHEX.R)|[Flowchart](https://github.com/kumeS/chatAI4R/blob/main/inst/flowchart/createHEX.png)|
+
+
 
 
 ### Visualization functions
@@ -99,12 +117,12 @@ Copyright (c) 2023 Satoshi Kume. Released under the [Artistic License 2.0](http:
 
 ## Cite
 
-Kume S. (2023) stableDiffusion4R: Provision of stable diffusion interface for R
+Kume S. (2023) stableDiffusion4R: R Interface to 'Stable Diffusion' APIs for AI-Driven Creative Image Transformations
 
 ```
 #BibTeX
 @misc{Kume2023stableDiffusion4R,
-  title={stableDiffusion4R: Provision of stable diffusion interface for R},
+  title={stableDiffusion4R: R Interface to 'Stable Diffusion' APIs for AI-Driven Creative Image Transformations},
   author={Kume, Satoshi}, year={2023},
   publisher={GitHub}, note={R Package},
   howpublished={\url{https://github.com/kumeS/stableDiffusion4R}},

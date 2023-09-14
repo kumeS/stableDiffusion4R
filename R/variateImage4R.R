@@ -1,7 +1,7 @@
-#' Generate Image Variations using OpenAI
+#' Generate Image Variations using DALLE2
 #'
-#' This function generates variations of a given image using OpenAI's image API.
-#' It uses OpenAI's image API to generate a specified number of variations for a provided image.
+#' This function generates variations of a given image using OpenAI's DALLE2 API.
+#' It uses OpenAI's DALLE2 API to generate a specified number of variations for a provided image.
 #'
 #' @title Generate Image Variations using OpenAI API
 #' @description Generates variations of a given image using the OpenAI API.
@@ -28,7 +28,7 @@
 #' @return A list. This list contains either URLs pointing to the generated images
 #' or the images themselves in base64 encoded JSON format, depending on the `Output_image` parameter.
 #'
-#' @export imageVariation4R
+#' @export variateImage4R
 #' @author Satoshi Kume
 #'
 #' @examples
@@ -37,14 +37,14 @@
 #' image_path = "path_to_your_image.png"
 #'
 #' # Generate image variations
-#' res <- imageVariation4R(image = image_path, n = 3, size = "256x256",
+#' res <- variateImage4R(image = image_path, n = 3, size = "256x256",
 #' response_format = "url", Output_image = TRUE)
 #'
 #' # Display the generated image variations
 #' Display(res)
 #' }
 
-imageVariation4R <- function(image,
+variateImage4R <- function(image,
                         n = 3,
                         size = "256x256",
                         response_format = "url",

@@ -4,7 +4,7 @@ text_prompts <- "speed star, logo of deepRstudio, text logo, fast-looking, geome
 package_name = "deepRstudio"
 number_of_images = 1
 
-txt2img4rHEX <- function(text_prompts,
+txt2img4HEX <- function(text_prompts,
                          package_name,
                          number_of_images = 1){
 
@@ -17,7 +17,7 @@ txt2img4rHEX <- function(text_prompts,
   pr <- text_prompts
 
   # Generate the image via Stable Diffusion
-  res <- txt2img4R(text_prompts = pr,
+  res <- txt2img(text_prompts = pr,
                    negative_prompts = "text, ((low quality)), noisy, blurry, background",
                    height = 512*2,
                    width = 512*2,

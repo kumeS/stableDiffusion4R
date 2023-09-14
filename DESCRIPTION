@@ -1,8 +1,8 @@
 Package: stableDiffusion4R
 Type: Package
-Title: Provision of Stable Diffusion Interface for R
+Title: R Interface to 'Stable Diffusion' APIs for AI-Driven Creative Image Transformations
 Version: 0.0.1
-Date: 2023-08-20
+Date: 2023-09-14
 Authors@R: c(
     person (given = "Satoshi", family = "Kume",
     role = c("aut", "cre"), 
@@ -10,11 +10,11 @@ Authors@R: c(
     comment = c(ORCID = "0000-0001-7481-2843"))
     )
 Maintainer: Satoshi Kume <satoshi.kume.1984@gmail.com>
-Description: AArtificial Intelligence (AI)-based image generation techniques are revolutionizing various fields, 
-    and this package brings those capabilities into the R environment. This package provides a seamless interface to integrate the 'Stable Diffusion' Web APIs 
-    (see <https://platform.stability.ai/docs/getting-started>) into R, allowing users to leverage advanced image transformation methods. 
-    Specifically, this package includes functions for text-to-image (txt2img or t2i) and image-to-image (img2img or i2i) transformations 
-    using the 'Stable Diffusion' APIs, enabling creative and analytical applications in data visualization and more.
+Description: Artificial Intelligence (AI)-based image generation techniques are revolutionizing various fields, 
+    and this package enables these capabilities in R. It provides a seamless interface to integrate the 'Stable Diffusion' Web APIs 
+    (see <https://platform.stability.ai/docs/getting-started>) into R, offering advanced methods for creative and analytical image transformations. 
+    Specifically, the package includes functions for text-to-image (txt2img or t2i) and image-to-image (img2img or i2i) transformations 
+    using the 'Stable Diffusion' APIs, enabling applications in data visualization and beyond.
 Depends: R (>= 4.2.0)
 Imports: httr, 
     jsonlite, 
@@ -25,7 +25,9 @@ Imports: httr,
     base64enc, 
     png,
     animation,
-    hexSticker
+    hexSticker,
+    purrr,
+    GoogleImage2Array
 Suggests: testthat, knitr
 License: Artistic-2.0
 URL: https://kumes.github.io/stableDiffusion4R/, https://github.com/kumeS/stableDiffusion4R

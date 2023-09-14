@@ -25,17 +25,17 @@
 #' @importFrom png readPNG
 #' @importFrom EBImage rotate Image readImage resize writeImage
 #' @return A list of images generated from the initial image and the text prompt.
-#' @export img2img4R
+#' @export img2img
 #' @author Satoshi Kume
 #' @examples
 #' \dontrun{
 #' text_prompts <- "Add a cat"
 #' init_image_path <- system.file("img", "JP_castle.png", package = "chatAI4R")
-#' images = img2img4R(text_prompts, init_image_path)
+#' images = img2img(text_prompts, init_image_path)
 #' Display(images)
 #' }
 
-img2img4R <- function(
+img2img <- function(
   text_prompts,
   init_image_path,
   init_image_mode = "IMAGE_STRENGTH",

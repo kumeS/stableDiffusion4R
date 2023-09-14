@@ -17,16 +17,16 @@
 #' @importFrom png readPNG
 #' @importFrom EBImage rotate Image
 #' @return A list of image up-scaled from the initial image.
-#' @export img2img_upscale4R
+#' @export img2img_upscale
 #' @author Satoshi Kume
 #' @examples
 #' \dontrun{
 #' init_image_path <- system.file("images", "JP_castle.png", package = "chatAI4R")
-#' result <- img2img_upscale4R(init_image_path)
+#' result <- img2img_upscale(init_image_path)
 #' Display(result, write_file = TRUE)
 #' }
 
-img2img_upscale4R <- function(
+img2img_upscale <- function(
   init_image_path,
   width = 1024,
   engine_id = "esrgan-v1-x2plus",

@@ -1,7 +1,7 @@
-#' Generate Text to Images Using OpenAI API
+#' Generate Text to Images Using DALLE2 API
 #'
-#' @title Generate Text to Images Using OpenAI API
-#' @description This function generates images from text input using OpenAI API.
+#' @title Generate Text to Images Using OpenAI DALLE2 API
+#' @description This function generates images from text input using OpenAI DALLE2 API.
 #' @param content A character string, the content to generate images.
 #' @param n A count, the number of images to generate. Must be between 1 and 10.
 #' @param size A character string, the size of the images. Must be one of "256x256", "512x512", "1024x1024".

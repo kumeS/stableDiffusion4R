@@ -48,12 +48,6 @@ assertthat::assert_that(is.list(img), length(img) > 0, all(sapply(img, function(
   # Set display method to raster
   options(EBImage.display = "raster")
 
-  # Save as Rds
-  if(Rds){
-    r <- paste0("Img_", formatC(length(dir(pattern = "[.]Rds"))+1, flag = "0", width = 3), ".Rds")
-    saveRDS(img, file = r)
-    }
-
   # Create an empty list to store images
   img0 <- list()
 
@@ -89,6 +83,12 @@ assertthat::assert_that(is.list(img), length(img) > 0, all(sapply(img, function(
       png::writePNG(img0[[n]], target = f)
     }
   }
+
+  # Save as Rds: pngとrds両方で残しておく
+  if(Rds){
+    r <- paste0("Img_", formatC(length(dir(pattern = "[.]Rds"))+1, flag = "0", width = 3), ".Rds")
+    saveRDS(img, file = r)
+    }
 
   # Determine the display configuration based on the length of the image list
   ans <- switch (length(img),
