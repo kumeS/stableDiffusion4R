@@ -36,17 +36,17 @@ createHEX_with_generateImage4R <- function(description, package_name, n = 3){
   assertthat::assert_that(assertthat::is.count(n))
 
   # Create the prompt
-  pr <- paste0('Generate one hexadecimal sticker as called "hex sticker" for the R package at the center of the output image using the following description: ',
+  pr <- paste0('Generate one hexadecimal sticker with background transparent as called "hex sticker" for the R package at the center of the output image using the following description: ',
                description)
 
   # Generate the image
-  res <-  generateImage4R(content = pr,
-                          n = n,
-                          size = "256x256",
+  res <-  generateDalleImage4R(content = pr,
+                          model = "dall-e-3",
+                          n = 1,
+                          size = "1024x1024",
                           response_format = "url",
                           Output_image = FALSE,
-                          SaveImg = FALSE,
-                          api_key = Sys.getenv("OPENAI_API_KEY"))
+                          SaveImg = FALSE)
 
   # Create the hex stickers
   img <- list()

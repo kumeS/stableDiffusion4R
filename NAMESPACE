@@ -2,7 +2,7 @@
 
 export(createHEX_with_generateImage4R)
 export(editImage4R)
-export(generateImage4R)
+export(generateDalleImage4R)
 export(img2img)
 export(img2img_upscale)
 export(imgDisplay)

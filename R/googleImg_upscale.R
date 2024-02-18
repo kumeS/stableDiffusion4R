@@ -1,0 +1,5 @@
+
+#GoogleImage2Arrayとimg2img_upscaleとを組み合わせた実行関数
+#googleImg_upscale
+
+

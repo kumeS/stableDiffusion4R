@@ -2,6 +2,8 @@
 #' @description This function Generate an image from a text prompt using the Stable Diffusion API.
 #'              It sends the parameters to the API and receives a response that includes
 #'              the base64-encoded image data, which is then converted to a PNG image.
+#'              For SDXL v0.9 and v1.0, the allowed dimensions are 1024x1024, 1152x896, 1216x832,
+#'              1344x768, 1536x640, 640x1536, 768x1344, 832x1216, 896x1152.
 #' @param text_prompts A string. The text prompt to use for image generation. Should not be empty.
 #' @param negative_prompts A string. The negative prompts for image generation.
 #' @param weight A numeric value indicating the weight of the text prompt. Default is 0.5.
@@ -66,6 +68,9 @@ txt2img <- function(
   if (is.null(api_key) || api_key == "") {
     stop("api_key must not be empty or NULL")
   }
+
+  height = 64*floor(height/64)
+  width = 64*floor(width/64)
 
   assertthat::assert_that(
     assertthat::is.string(text_prompts),

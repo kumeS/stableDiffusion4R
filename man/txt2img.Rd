@@ -66,6 +66,8 @@ A list of images generated from the text prompt.
 This function Generate an image from a text prompt using the Stable Diffusion API.
              It sends the parameters to the API and receives a response that includes
              the base64-encoded image data, which is then converted to a PNG image.
+             For SDXL v0.9 and v1.0, the allowed dimensions are 1024x1024, 1152x896, 1216x832,
+             1344x768, 1536x640, 640x1536, 768x1344, 832x1216, 896x1152.
 }
 \examples{
 \dontrun{
