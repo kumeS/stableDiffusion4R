@@ -19,8 +19,8 @@
 #' @examples
 #' \dontrun{
 #' # Define a description for the R package
-#' description = "hatAI4R provides a seamless interface for integrating OpenAI and other APIs into R."
-#' package_name = "R package"
+#' description = "chatAI4R provides a seamless interface for integrating OpenAI and other APIs into R."
+#' package_name = "chatAI4R"
 #'
 #' # Generate hex stickers
 #' res <- createHEX_with_generateImage4R(description, package_name)
@@ -29,7 +29,9 @@
 #' Display(res)
 #' }
 
-createHEX_with_generateImage4R <- function(description, package_name, n = 3){
+createHEX_with_generateImage4R <- function(description,
+                                           package_name,
+                                           n = 1){
   # Verify the types of the input parameters
   assertthat::assert_that(assertthat::is.string(description))
   assertthat::assert_that(assertthat::is.string(package_name))
@@ -48,15 +50,27 @@ createHEX_with_generateImage4R <- function(description, package_name, n = 3){
                           Output_image = FALSE,
                           SaveImg = FALSE)
 
+
+
   # Create the hex stickers
   img <- list()
+  if( model == "dall-e-3" ){
+  for(k in seq_len(n)){
+    suppressMessages(
+    img[[1]][k] <- res[2]
+    img[[2]][k] <-  hexSticker::sticker(res[2],
+                                     package = package_name,
+                                     p_y = 1.5, p_size=12,
+                                     s_x=1, s_y=.8, s_width=.5)
+    )
+  }else{
   for(k in seq_len(n)){
     suppressMessages(
     img[[k]] <-  hexSticker::sticker(res[k],
                                      package = package_name,
                                      p_y = 1.5, p_size=12,
                                      s_x=1, s_y=.8, s_width=.5)
-    )
+    )}
   }
 
   # Return the result
