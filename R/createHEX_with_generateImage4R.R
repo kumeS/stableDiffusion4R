@@ -57,12 +57,12 @@ createHEX_with_generateImage4R <- function(description,
   if( model == "dall-e-3" ){
   for(k in seq_len(n)){
     suppressMessages(
-    img[[1]][k] <- res[2]
-    img[[2]][k] <-  hexSticker::sticker(res[2],
+    img[[1]][k] <- res[c(grepl("^https", res))]
+    img[[2]][k] <- hexSticker::sticker(res[2],
                                      package = package_name,
                                      p_y = 1.5, p_size=12,
                                      s_x=1, s_y=.8, s_width=.5)
-    )
+    )}
   }else{
   for(k in seq_len(n)){
     suppressMessages(
@@ -75,4 +75,4 @@ createHEX_with_generateImage4R <- function(description,
 
   # Return the result
   return(img)
-}
+  }

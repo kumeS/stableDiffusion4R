@@ -73,7 +73,7 @@ generateDalleImage4R <- function(content,
   # Extract and return the response content
   if(model == "dall-e-3"){
   if(Output_image){
-    result <-EBImage::readImage(files = extract.url["url"], type = "png")
+    result <-EBImage::readImage(files = extract.url[2], type = "png")
     if(SaveImg){ saveRDS(result, file = paste0("CreatedImg_", formatC(length(dir(pattern = "[.]Rds"))+1, flag = "0", width = 3), ".Rds")) }
     return(result)
   } else {
