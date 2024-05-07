@@ -4,7 +4,7 @@
 \alias{createHEX_with_generateImage4R}
 \title{Create Hex Stickers for R Packages}
 \usage{
-createHEX_with_generateImage4R(description, package_name, n = 3)
+createHEX_with_generateImage4R(description, package_name, n = 1)
 }
 \arguments{
 \item{description}{A string. This is the description of the R package for which the stickers will be generated.}
@@ -27,8 +27,8 @@ Create Hex Stickers for R Packages
 \examples{
 \dontrun{
 # Define a description for the R package
-description = "hatAI4R provides a seamless interface for integrating OpenAI and other APIs into R."
-package_name = "R package"
+description = "chatAI4R provides a seamless interface for integrating OpenAI and other APIs into R."
+package_name = "chatAI4R"
 
 # Generate hex stickers
 res <- createHEX_with_generateImage4R(description, package_name)

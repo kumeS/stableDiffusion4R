@@ -52,17 +52,31 @@ createHEX_with_generateImage4R <- function(description,
 
 
 
+
+  a <- colordistance::removeBackground(
+  img=EBImage::readImage(files = res[2], type = "png"),
+  lower = NULL,
+  upper = NULL,
+  quietly = FALSE,
+  alpha.channel = TRUE
+)
+
+  #EBImage::display(EBImage::readImage(files = res[2], type = "png"))
+  #plot(a[[2]])
+
+
   # Create the hex stickers
   img <- list()
   if( model == "dall-e-3" ){
   for(k in seq_len(n)){
-    suppressMessages(
-    img[[1]][k] <- res[c(grepl("^https", res))]
-    img[[2]][k] <- hexSticker::sticker(res[2],
+  #k <- 1
+  img[[1]] <- res[c(grepl("^https", res))]
+  suppressMessages(
+  img[[2]] <- hexSticker::sticker(res[2],
                                      package = package_name,
                                      p_y = 1.5, p_size=12,
-                                     s_x=1, s_y=.8, s_width=.5)
-    )}
+                                     s_x=1, s_y=.8, s_width=.5))
+  }
   }else{
   for(k in seq_len(n)){
     suppressMessages(
